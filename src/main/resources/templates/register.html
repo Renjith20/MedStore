@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Register</title>
+		<style>
+	  body {
+      font-family: Arial, sans-serif;
+      background-image: url("https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=1480&t=st=1710087885~exp=1710088485~hmac=13cd0d3290e7d271224de99403af27ead4a378337fc0bdb814867c18ff810c59");
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      padding: 35px;
+      border-radius: 8px;
+      width: 400px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #AC7D88;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #AC7D88;
+      box-shadow: 0 0 5px rgba(172, 125, 136, 0.5);
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+       margin-left: 8px;
+      background-color: #00A676;
+      color:black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .form-group button:hover {
+      background-color:#74E291;
+    }
+    .success-message {
+      background-color: #00A676;
+      padding:20px;
+      color:black;
+      border-radius: 4px;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 200;
+    }
+        .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.medistore-heading {
+  font-size: 50px;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+.medistore-heading::before {
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.log ,a{
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+	</style>
+	</head>
+	<body>
+
+  <div class="form-container">
+	   
+    <div th:if = "${param.success}">
+	  <div class="success-message">
+        Registration Successful.. You can now login.
+      </div>
+	</div>
+	<div class="container">
+    <h1 class="medistore-heading">MediStore</h1>
+  </div>
+    <h2>Sign Up</h2>
+    <form
+     method="post"
+     role="form"
+     th:action = "@{/register}"
+     th:object = "${user}" 
+    >
+      <div class="form-group">
+        <label for="fullname">Fullname</label>
+        <input th:field="*{fullname}" type="text" id="fullname" name="fullname" required>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input th:field="*{username}" type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input th:field="*{password}" type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Register</button>
+      </div>
+    </form>
+    <div class="log">
+	    <span> Already have an account ? <a th:href="@{/login}">sign in</a></span>
+	</div>
+  </div>
+	</body>
+</html>
